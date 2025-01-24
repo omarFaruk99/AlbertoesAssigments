@@ -21,6 +21,9 @@ const Navbar = async () => {
           <Link href="/profile" className="hover:text-gray-300">
             Profile
           </Link>
+          <Link href="#" className="hover:text-gray-300">
+            Test
+          </Link>
 
           {/* Conditional Authentication Buttons */}
           {!user ? (
