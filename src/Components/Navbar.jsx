@@ -6,7 +6,6 @@ const Navbar = async () => {
   const user = await getUser();
 
   console.log(user);
-  const isAuthenticated = false;
 
   return (
     <header className="bg-gray-800 text-white shadow-lg">
@@ -24,7 +23,7 @@ const Navbar = async () => {
           </Link>
 
           {/* Conditional Authentication Buttons */}
-          {!isAuthenticated ? (
+          {!user ? (
             <>
               <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
                 <Link href="/api/auth/login">Login</Link>
