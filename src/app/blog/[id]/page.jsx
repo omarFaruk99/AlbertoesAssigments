@@ -21,13 +21,19 @@ export default function BlogDetails() {
   }, [id]);
 
   if (!post) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-xl">Loading...</div>;
   }
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-      <p>{post.body}</p>
+      <div className=" border border-gray-800 bg-zinc-900 rounded-lg shadow-lg p-6">
+        <h1 className="text-4xl font-bold mb-4 text-center text-slate-400">
+          {post.title}
+        </h1>
+        <p className="text-slate-300 text-lg leading-relaxed mb-4">
+          {post.body}
+        </p>
+      </div>
     </div>
   );
 }

@@ -19,16 +19,16 @@ export default function Home() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold mb-4">Blog Posts</h1>
-      <ul className="space-y-4">
+      <h1 className="text-4xl text-center font-bold mb-4">Blog Posts</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {posts.map((post) => (
-          <li key={post.id} className="border-b pb-2">
+          <div key={post.id} className="border border-gray-800 bg-zinc-900 rounded-lg p-4 shadow-xl">
             <Link href={`/blog/${post.id}`}>
-              <p className="text-blue-500 hover:underline">{post.title}</p>
+              <p className="text-slate-300 hover:underline">{post.title}</p>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
