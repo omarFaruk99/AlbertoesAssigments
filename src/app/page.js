@@ -1,11 +1,34 @@
-import Image from "next/image";
+"use client";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      const data = await response.json();
+      setPosts(data);
+    }
+
+    fetchPosts();
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className="text-4xl text-sky-500">Home Page</h1>
-      </main>
+    <div className="container mx-auto p-4">
+      <h1 className="text-4xl font-bold mb-4">Blog Posts</h1>
+      <ul className="space-y-4">
+        {posts.map((post) => (
+          <li key={post.id} className="border-b pb-2">
+            <Link href={`/blog/${post.id}`}>
+              <p className="text-blue-500 hover:underline">{post.title}</p>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
